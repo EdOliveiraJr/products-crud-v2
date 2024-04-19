@@ -1,15 +1,15 @@
-import {createApp} from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import {createApp} from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 
-import './plugins/axios'
+import './plugins/axios';
 
 import PrimeVue from 'primevue/config';
-import 'primevue/resources/themes/aura-light-green/theme.css'
-import 'primevue/resources/primevue.min.css'
-import 'primeicons/primeicons.css'
-const app = createApp(App)
+import 'primevue/resources/themes/aura-light-green/theme.css';
+import 'primevue/resources/primevue.min.css';
+import 'primeicons/primeicons.css';
+const app = createApp(App);
 
 import ToastService from 'primevue/toastservice';
 import Accordion from 'primevue/accordion';
@@ -55,12 +55,12 @@ import Toast from 'primevue/toast';
 import ToggleButton from 'primevue/togglebutton';
 import Tooltip from 'primevue/tooltip';
 
-app.use(router)
-app.use(store)
-app.use(PrimeVue)
-app.use(ToastService)
+app.use(router);
+app.use(store);
+app.use(PrimeVue);
+app.use(ToastService);
 
-app.directive('tooltip', Tooltip)
+app.directive('tooltip', Tooltip);
 
 app.component('Accordion', Accordion);
 app.component('AccordionTab', AccordionTab);
