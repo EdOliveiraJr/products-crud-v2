@@ -11,6 +11,8 @@
   "dependencies": {
     "axios": "^1.6.8",
     "core-js": "^3.8.3",
+    "primeicons": "^7.0.0",
+    "primevue": "^3.51.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
