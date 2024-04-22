@@ -24,6 +24,10 @@
                                 <div class="flex flex-column md:align-items-end gap-5">
                                     <span class="text-xl font-semibold text-900" >{{ money(item.price)}}</span>
                                 </div>
+                                <div>
+                                    <Button class="mx-1"  severity="success" rounded raised >Ativar</Button>
+                                    <Button class="mx-1" severity="danger" rounded raised >Deletar</Button>
+                                </div>
                               
                             </div>
                         </div>
