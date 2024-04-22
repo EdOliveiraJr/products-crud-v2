@@ -9,24 +9,32 @@
         </TabMenu>
         <div v-if="this.label == 'Produtos Ativos'">
             <ActiveProducts/>
+            <div class="flex justify-content-end">
+                <Button 
+                class="mx-6 p-4" 
+                icon="pi pi-plus" 
+                severity="success"
+                raised 
+                rounded
+                />
+            </div>    
         </div>
         <div v-else>
             <InactiveProducts/>
         </div>
-    </div>
-    <div class="flex justify-content-end">
-      <Button class="mx-6 p-4" icon="pi pi-plus" severity="info" rounded></Button>
     </div>
 </template>
 
 <script>
 import TabMenu from 'primevue/tabmenu'
 import Card from 'primevue/card';
+import Button from 'primevue/button';
 import InactiveProducts from '../components/InactiveProducts.vue'
 import ActiveProducts from '../components/ActiveProducts.vue'
 
+
 export default {
-  components: { TabMenu, Card, InactiveProducts, ActiveProducts },
+  components: { TabMenu, Button, Card, InactiveProducts, ActiveProducts },
   data() {
       return {
           label: '',
