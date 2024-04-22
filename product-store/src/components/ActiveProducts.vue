@@ -52,7 +52,7 @@ export default {
                     name: 'banana2',
                     price: 3.0,
                     description: 'prata',
-                    isActive: false
+                    isActive: true
                 }
             ]
         }
