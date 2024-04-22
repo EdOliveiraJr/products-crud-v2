@@ -1,5 +1,5 @@
 <template>
-    <Dialog header="Adicionar Novo Produto" v-model:visible="visibleDialog">
+    <Dialog header="Adicionar Novo Produto" v-model:visible="visibleDialog" @hide="closeDialog">
         <FloatLabel class="m-5">
             <InputText id="name" v-model="value" />
              <label for="name">Nome</label>
