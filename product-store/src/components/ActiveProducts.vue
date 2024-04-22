@@ -13,7 +13,7 @@
                             :class="{ 'border-top-1 surface-border'
                             :index !== 0 }"
                         >
-                            <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
+                            <div class="flex flex-column md:flex-row justify-content-around md:align-items-center flex-1 gap-4">
                                 <Tag :value="item.isActive ? 'Ativo' : 'Inativo'" class="" style="left: 4px; top: 4px"></Tag>
                                 <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
                                     <div>
@@ -22,8 +22,13 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-column md:align-items-end gap-5">
-                                    <span class="text-xl font-semibold text-900">R$ {{ item.price }}</span>
+                                    <span class="text-xl font-semibold text-900" >{{ money(item.price)}}</span>
                                 </div>
+                                <div>
+                                    <Button class="mx-1" severity="info" rounded raised >Editar</Button>
+                                    <Button class="mx-1"  severity="warning" rounded raised >Desativar</Button>
+                                </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -38,10 +43,14 @@ import DataView from 'primevue/dataview';
 
 export default {
     components: { DataView },
+    methods: {
+        money(value) {
+            return 'R$ ' + value + ',00' 
+        }
+    },
     data(){
         return {
             products: [
-
                 {
                     name: 'banana1',
                     price: 2.0,
