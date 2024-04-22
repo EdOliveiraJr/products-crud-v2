@@ -5,15 +5,18 @@
               <div v-bind="props.action" @click="this.label = item.label">
                   {{ item.label }}
                </div>
-          </template>
-      </TabMenu>
-      <div v-if="this.label == 'Produtos Ativos'">
-          <ActiveProducts/>
-      </div>
-      <div v-else>
-          <InactiveProducts/>
-      </div>
-  </div>
+            </template>
+        </TabMenu>
+        <div v-if="this.label == 'Produtos Ativos'">
+            <ActiveProducts/>
+        </div>
+        <div v-else>
+            <InactiveProducts/>
+        </div>
+    </div>
+    <div class="flex justify-content-end">
+      <Button class="mx-6 p-4" icon="pi pi-plus" severity="info" rounded></Button>
+    </div>
 </template>
 
 <script>
