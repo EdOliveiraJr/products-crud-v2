@@ -34,12 +34,13 @@
 </template>
 
 <script>
-import TabMenu from 'primevue/tabmenu'
+import TabMenu from 'primevue/tabmenu';
 import Card from 'primevue/card';
 import Button from 'primevue/button';
-import InactiveProducts from '../components/InactiveProducts.vue'
-import ActiveProducts from '../components/ActiveProducts.vue'
+import InactiveProducts from '../components/InactiveProducts.vue';
+import ActiveProducts from '../components/ActiveProducts.vue';
 import ProductForm from '../components/ProductForm.vue';
+import service from '../service/index';
 
 export default {
   components: { TabMenu, Button, Card, InactiveProducts, ActiveProducts, ProductForm },
@@ -51,31 +52,31 @@ export default {
             { label: 'Produtos Ativos', icon: 'pi pi-check-circle'},
             { label: 'Produtos Inativos', icon: 'pi pi-ban'},
         ],
-        products: [
-                {
-                    name: 'banana1',
-                    price: 2.0,
-                    description: 'naninca',
-                    isActive: true
-                },
-                {
-                    name: 'banana2',
-                    price: 3.0,
-                    description: 'prata',
-                    isActive: true
-                }
-            ]
+        products: []
     }   
   },
   methods: {
+    loadProducts(){
+        console.log('chamou load');
+        this.products = service.getActivesProducts()
+                        .then(data=> {
+                            this.products = data
+                        })
+                        .catch(error =>{
+                            console.error("Erro ao obter dados:", error);
+                        });
+        
+    },
     buttonAddProduct(){
         this.visible = true;
     },
     addProduct(event) {
-        console.log(event);
-        this.products.push(event)
-        console.log(this.products);
+        service.addProduct(event)
+        this.loadProducts()
     }
   },
+  created(){
+    this.loadProducts()
+  }
 }
 </script>
