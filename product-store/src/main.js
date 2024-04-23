@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 
 import './plugins/axios';
+import './service/index';
 
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-green/theme.css';
