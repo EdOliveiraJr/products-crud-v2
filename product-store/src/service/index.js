@@ -3,18 +3,18 @@ import api from '../plugins/axios'
 const service = {
     async getActivesProducts() {
         try {
-            const response = await api.get('/products?isActive=true')
-            return response.data.data
+            const response = await api.get('/products?isActive=true');
+            return response.data.data;
         }
         catch{
-            console.error("Erro ao obter dados:", error);
+            console.log("Erro ao obter dados:", error);
             return null;
         }
     },
     async getInactivesProducts(){
         try{
-            const response = await api.get('/products?isActive=false')
-            return response.data.data
+            const response = await api.get('/products?isActive=false');
+            return response.data.data;
         }
         catch{
             console.error("Erro ao obter dados:", error);
@@ -23,8 +23,8 @@ const service = {
     },
     async getProduct(id){
         try{
-            const response = await api.get(`/products/${id}`)
-            return response.data.data
+            const response = await api.get(`/products/${id}`);
+            return response.data.data;
         }
         catch{
             console.error("Erro ao obter dados:", error);
@@ -33,53 +33,51 @@ const service = {
     },
     async addProduct(product){
         try{
-            const response = await api.post('/products/', product)
-            return alert('Produto adicionado com sucesso', response)
-            
+            await api.post('/products/', product);
+            return alert('Produto adicionado com sucesso');
         }
         catch{
-            console.error("Erro ao obter dados:", error);
+            console.error("Erro ao realizar a operação:", error);
             return null;
         }
     },
     async updateProduct(id, product){
         try{
-            const response = await api.put(`/products/${id}`, product)
-            return alert('Produto atualizado com sucesso', response);
+            await api.put(`/products/${id}`, product);
+            return alert('Produto atualizado com sucesso');
         }
         catch{
-            console.error("Erro ao obter dados:", error);
+            console.error("Erro ao realizar operação:", error);
             return null;
         }
     },
     async deleteProduct(id){
         try{
-            const response = await api.delete(`/products/${id}`)
-            return alert('Produto excluído com sucesso', response)
-            
+            await api.delete(`/products/${id}`);
+            return alert('Produto excluído com sucesso');
         }
         catch{
-            console.error("Erro ao obter dados:", error);
+            console.error("Erro ao realizar operação:", error);
             return null;
         }
     },
     async activeProduct(id){
         try{
-            const response = await api.patch(`/products/${id}/active/`)
-            return alert('Produto ativado com sucesso', response)
+            await api.patch(`/products/${id}/active/`);
+            return alert('Produto ativado com sucesso');
         }
         catch{
-            console.error("Erro ao obter dados:", error);
+            console.error("Erro ao realizar operação:", error);
             return null;
         }
     },
     async inactiveProduct(id){
         try{
-            const response = await api.patch(`/products/${id}/inactive/`)
-            return alert('Produto ativado com sucesso', response)
+            await api.patch(`/products/${id}/inactive/`);
+            return alert('Produto inativado com sucesso');
         }
         catch{
-            console.error("Erro ao obter dados:", error);
+            console.error("Erro ao operação:", error);
             return null;
         }        
     },
