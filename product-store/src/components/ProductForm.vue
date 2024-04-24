@@ -1,5 +1,9 @@
 <template>
-	<Dialog :header="header" v-model:visible="visibleDialog" @after-hide="closeDialog">
+	<Dialog 
+		:header="header" 
+		v-model:visible="visibleDialog" 
+		@after-hide="closeDialog"
+	>
 		<div v-if="!productEdit">
 			<FloatLabel class="m-5">
 				<InputText id="name" v-model="product.name" />
@@ -14,8 +18,21 @@
 				<label for="description">Descrição</label>
 			</FloatLabel>
 			<div class="flex justify-content-end gap-2">
-				<Button type="button" label="Cancelar" severity="secondary" @click="closeDialog"></Button>
-				<Button type="button" label="Salvar" @click="saveNewProduct(product)"></Button>
+				<Button 
+					label="Cancelar"
+					raised
+					rounded
+					severity="secondary" 
+					@click="closeDialog"
+				>
+				</Button>
+				<Button 
+					label="Salvar"
+					raised
+					rounded 
+					@click="saveNewProduct(product)"
+				>
+				</Button>
 			</div>
 		</div>
 		<div v-else>
@@ -32,8 +49,21 @@
 				<label for="description">Descrição</label>
 			</FloatLabel>
 			<div class="flex justify-content-end gap-2">
-				<Button type="button" label="Cancelar" severity="secondary" @click="closeDialog"></Button>
-				<Button type="button" label="Salvar" @click="saveEditProduct(productEdit)"></Button>
+				<Button 
+					label="Cancelar" 
+					raised
+					rounded
+					severity="secondary" 
+					@click="closeDialog"
+				>
+				</Button>
+				<Button 
+					label="Salvar"
+					raised
+					rounded 
+					@click="saveEditProduct(productEdit)"
+				>
+				</Button>
 			</div>
 		</div>
 	</Dialog>
@@ -44,22 +74,21 @@ import Dialog from 'primevue/dialog';
 import FloatLabel from 'primevue/floatlabel'
 
 export default {
+	components: { Dialog, FloatLabel },
 	props: {
-		visible: {
-			type: Boolean,
-		},
 		header: {
 			type: String,
 			required: true,
 		},
 		productEdit: {
 			type: Object,
-		}
+		},
+		visible: {
+			type: Boolean,
+		},
 	},
-	components: { Dialog, FloatLabel },
 	data() {
 		return {
-			visibleDialog: this.visible,
 			product: {
 				id: '',
 				name: '',
@@ -67,7 +96,13 @@ export default {
 				description: '',
 				isActive: true,
 			},
+			visibleDialog: this.visible,
 
+		}
+	},
+	created() {
+		if (this.productEdit) {
+			this.product = this.productEdit
 		}
 	},
 	methods: {
@@ -75,22 +110,15 @@ export default {
 			this.visibleDialog = false
 			this.$emit('closedDialog', this.visibleDialog)
 		},
-		saveNewProduct(product){
-			this.$emit('saveNewProduct', product)
-			this.closeDialog()
-		},
 		saveEditProduct(product) {
 			this.$emit('saveEditProduct', product)
 			this.closeDialog()
 		},
-
+		saveNewProduct(product) {
+			this.$emit('saveNewProduct', product)
+			this.closeDialog()
+		},
 	},
-	created() {
-		if (this.productEdit) {
-			this.product = this.productEdit
-		}
-	}
 }
 </script>
-
 <style></style>

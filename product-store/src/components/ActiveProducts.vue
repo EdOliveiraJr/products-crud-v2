@@ -23,10 +23,22 @@
 									<span class="text-xl font-semibold text-900">{{ money(item.price) }}</span>
 								</div>
 								<div>
-									<Button class="mx-1" severity="info" rounded raised
-										@click="openProductFormEdit(item)">Editar</Button>
-									<Button class="mx-1" severity="warning" rounded raised
-										@click="deactivateProduct(item.id)">Desativar</Button>
+									<Button 
+										class="mx-1" 
+										label="Editar"
+										raised
+										rounded 
+										severity="info" 
+										@click="openProductFormEdit(item)"
+									/>
+									<Button
+										class="mx-1" 
+										label="Desativar"
+										raised
+										rounded 
+										severity="warning" 
+										@click="deactivateProduct(item.id)"
+									/>
 								</div>
 							</div>
 						</div>
@@ -58,14 +70,14 @@ export default {
 	},
 	data() {
 		return {
-			header: 'Edtiar Produto',
-			visible: false,
+			header: 'Editar Produto',
 			product: {
 				id: '',
 				name: '',
 				price: '',
 				description: '',
-			}
+			},
+			visible: false,
 		}
 	},
 	methods: {
