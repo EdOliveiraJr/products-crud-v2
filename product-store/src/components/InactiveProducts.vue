@@ -25,7 +25,7 @@
                                     <span class="text-xl font-semibold text-900" >{{ money(item.price)}}</span>
                                 </div>
                                 <div>
-                                    <Button class="mx-1"  severity="success" rounded raised >Ativar</Button>
+                                    <Button class="mx-1"  severity="success" rounded raised @click="activateProduct(item.id)">Ativar</Button>
                                     <Button class="mx-1" severity="danger" rounded raised >Deletar</Button>
                                 </div>
                               
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import service from '@/service';
 import DataView from 'primevue/dataview';
 
 export default {
@@ -49,6 +50,15 @@ export default {
     methods: {
         money(value) {
             return 'R$ ' + value + ',00' 
+        },
+        activateProduct(id){
+            service.activeProduct(id)
+            .then(() =>{
+                this.$emit('loadProducts')
+            })
+            .catch(error =>{
+                console.error("Erro ao obter dados:", error);
+            });
         }
     },
     data(){

@@ -29,7 +29,7 @@
             </div>    
         </div>
         <div v-else>
-            <InactiveProducts :products="productsInactives"/>
+            <InactiveProducts :products="productsInactives" @loadProducts="loadProducts"/>
         </div> 
     </div>
 </template>
