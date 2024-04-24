@@ -21,6 +21,7 @@
             </div>
             <div v-if="this.visible == true">
                 <ProductForm 
+                    :header="header"
                     :visible="this.visible" 
                     @closedDialog="visible=$event" 
                     @saveProduct="addProduct($event)"
@@ -46,6 +47,7 @@ export default {
   components: { TabMenu, Button, Card, InactiveProducts, ActiveProducts, ProductForm },
   data() {
     return {
+        header: 'Adicionar Novo Produto',
         label: '',
         visible: false, 
         items: [
