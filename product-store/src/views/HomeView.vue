@@ -8,7 +8,7 @@
             </template>
         </TabMenu>
         <div v-if="this.label == 'Produtos Ativos'">
-            <ActiveProducts :products="products" @loadProducts="loadProducts"/>
+            <ActiveProducts :products="productsActives" @loadProducts="loadProducts"/>
             <div class="flex justify-content-end">
                 <Button 
                 class="mx-6 p-4" 
@@ -29,8 +29,8 @@
             </div>    
         </div>
         <div v-else>
-            <InactiveProducts/>
-        </div>
+            <InactiveProducts :products="productsInactives"/>
+        </div> 
     </div>
 </template>
 
@@ -54,18 +54,28 @@ export default {
             { label: 'Produtos Ativos', icon: 'pi pi-check-circle'},
             { label: 'Produtos Inativos', icon: 'pi pi-ban'},
         ],
-        products: []
+        productsActives: [],
+        productsInactives: [],
     }   
   },
   methods: {
     loadProducts(){
         service.getActivesProducts()
         .then(data => {
-            this.products = data;
+            this.productsActives = data;
         })
         .catch(error =>{
             console.error("Erro ao obter dados:", error);
         });
+
+        service.getInactivesProducts()
+        .then(data => {
+            this.productsInactives = data;
+        })
+        .catch(error =>{
+            console.error("Erro ao obter dados:", error);
+        });
+        
         
     },
     buttonAddProduct(){

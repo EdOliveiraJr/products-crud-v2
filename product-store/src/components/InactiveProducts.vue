@@ -43,6 +43,9 @@ import DataView from 'primevue/dataview';
 
 export default {
     components: { DataView },
+    props: {
+          products: Array
+    },
     methods: {
         money(value) {
             return 'R$ ' + value + ',00' 
@@ -50,20 +53,6 @@ export default {
     },
     data(){
         return {
-            products: [
-                {
-                    name: 'banana1',
-                    price: 2.0,
-                    description: 'naninca',
-                    isActive: false
-                },
-                {
-                    name: 'banana2',
-                    price: 3.0,
-                    description: 'prata',
-                    isActive: false
-                }
-            ]
         }
     }
 }
