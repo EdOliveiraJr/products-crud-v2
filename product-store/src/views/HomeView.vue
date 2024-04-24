@@ -16,15 +16,15 @@
                 severity="success"
                 raised 
                 rounded
-                @click="buttonAddProduct"
+                @click="openProductFormAdd"
                 />
             </div>
             <div v-if="this.visible == true">
                 <ProductForm 
                     :header="header"
                     :visible="this.visible" 
-                    @closedDialog="visible=$event" 
-                    @saveProduct="addProduct($event)"
+                    @closedDialog="visible=$event"
+                    @saveNewProduct="addProduct($event)"
                 />
             </div>    
         </div>
@@ -74,22 +74,20 @@ export default {
         })
         .catch(error =>{
             console.error("Erro ao obter dados:", error);
-        });
-        
-        
+        });  
     },
-    buttonAddProduct(){
+    openProductFormAdd(){
         this.visible = true;
     },
-    addProduct(event) {
-        service.addProduct(event)
+    addProduct(product) {
+        service.addProduct(product)
         .then(() =>{
-            this.loadProducts();
+            this.loadProducts()
         })
         .catch(error =>{
             console.error("Erro ao obter dados:", error);
         });
-    }
+    },
   },
   created(){
     this.loadProducts();
