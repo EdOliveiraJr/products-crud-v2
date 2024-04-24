@@ -57,14 +57,13 @@ export default {
   },
   methods: {
     loadProducts(){
-        console.log('chamou load');
-        this.products = service.getActivesProducts()
-                        .then(data=> {
-                            this.products = data
-                        })
-                        .catch(error =>{
-                            console.error("Erro ao obter dados:", error);
-                        });
+        service.getActivesProducts()
+        .then(data => {
+            this.products = data;
+        })
+        .catch(error =>{
+            console.error("Erro ao obter dados:", error);
+        });
         
     },
     buttonAddProduct(){
@@ -72,11 +71,16 @@ export default {
     },
     addProduct(event) {
         service.addProduct(event)
-        this.loadProducts()
+        .then(() =>{
+            this.loadProducts();
+        })
+        .catch(error =>{
+            console.error("Erro ao obter dados:", error);
+        });
     }
   },
   created(){
-    this.loadProducts()
+    this.loadProducts();
   }
 }
 </script>
