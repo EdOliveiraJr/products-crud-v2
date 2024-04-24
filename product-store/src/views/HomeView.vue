@@ -8,7 +8,7 @@
             </template>
         </TabMenu>
         <div v-if="this.label == 'Produtos Ativos'">
-            <ActiveProducts :products="products"/>
+            <ActiveProducts :products="products" @loadProducts="loadProducts"/>
             <div class="flex justify-content-end">
                 <Button 
                 class="mx-6 p-4" 

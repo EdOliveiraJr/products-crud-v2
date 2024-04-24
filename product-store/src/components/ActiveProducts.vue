@@ -27,7 +27,7 @@
                                 </div>
                                 <div>
                                     <Button class="mx-1" severity="info" rounded raised @click="buttonEditProduct">Editar</Button>
-                                    <Button class="mx-1"  severity="warning" rounded raised >Desativar</Button>
+                                    <Button class="mx-1"  severity="warning" rounded raised @click="desactiveProduct(item.id)">Desativar</Button>
                                 </div>
                                 <template v-if="this.visible == true">
                                     <ProductForm 
@@ -51,6 +51,7 @@
 <script>
 import DataView from 'primevue/dataview';
 import ProductForm from './ProductForm.vue';
+import service from '@/service';
 
 export default {
     props: {
@@ -85,6 +86,15 @@ export default {
             this.product.price = price;
             this.product .description = description;
             return this.product
+        },
+        desactiveProduct(id){
+            service.inactiveProduct(id)
+            .then(() =>{
+                this.$emit('loadProducts')
+            })
+            .catch(error =>{
+                console.error("Erro ao obter dados:", error);
+            });
         }
     },
 }
