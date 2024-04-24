@@ -26,7 +26,7 @@
                                 </div>
                                 <div>
                                     <Button class="mx-1"  severity="success" rounded raised @click="activateProduct(item.id)">Ativar</Button>
-                                    <Button class="mx-1" severity="danger" rounded raised >Deletar</Button>
+                                    <Button class="mx-1" severity="danger" rounded raised @click="deleteProduct(item.id)" >Deletar</Button>
                                 </div>
                               
                             </div>
@@ -59,7 +59,17 @@ export default {
             .catch(error =>{
                 console.error("Erro ao obter dados:", error);
             });
+        },
+        deleteProduct(id){
+            service.deleteProduct(id)
+            .then(() =>{
+                this.$emit('loadProducts')
+            })
+            .catch(error =>{
+                console.error("Erro ao obter dados:", error);
+            });
         }
+        
     },
     data(){
         return {
