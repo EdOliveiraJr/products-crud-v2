@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<h2>Produtos Ativos</h2>
+	<div class="active-products" >
+		<h2> Produtos Ativos </h2>
 		<DataView :value="products">
 			<template #list="slotProps">
 				<div class="grid grid-nogutter">
@@ -65,6 +65,7 @@ import service from '@/service';
 
 export default {
 	components: { DataView, ProductForm },
+	name: 'active-products',
 	props: {
 		products: Array
 	},

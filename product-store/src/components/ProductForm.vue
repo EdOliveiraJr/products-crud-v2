@@ -1,5 +1,5 @@
 <template>
-	<Dialog 
+	<Dialog class="product-form" 
 		:header="header" 
 		v-model:visible="visibleDialog" 
 		@after-hide="closeDialog"
@@ -75,6 +75,7 @@ import FloatLabel from 'primevue/floatlabel'
 
 export default {
 	components: { Dialog, FloatLabel },
+	name: 'product-form',
 	props: {
 		header: {
 			type: String,

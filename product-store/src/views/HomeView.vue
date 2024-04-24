@@ -46,6 +46,7 @@ import service from '../service/index';
 
 export default {
   components: { Button, TabMenu, ActiveProducts, InactiveProducts, ProductForm },
+  name: 'home',
   data() {
     return {
       header: 'Adicionar Novo Produto',
