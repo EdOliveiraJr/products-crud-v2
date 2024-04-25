@@ -20,7 +20,7 @@
                   </div>
                 </div>
                 <div class="flex flex-column md:align-items-end gap-5">
-                  <span class="text-xl font-semibold text-900">{{ money(item.price) }}</span>
+                  <span class="text-xl font-semibold text-900">{{ formatTextToCurrency(item.price) }}</span>
                 </div>
                 <div>
                   <Button 
@@ -40,7 +40,6 @@
                     @click="deleteProduct(item.id)"
                   />
                 </div>
-
               </div>
             </div>
           </div>
@@ -56,13 +55,13 @@ import DataView from 'primevue/dataview';
 import service from '@/service';
 
 export default {
+  name: 'InactiveProducts',
   components: { Button, DataView },
-  name: 'inactive-products',
   props: {
-    products: Array,
+    products: Array
   },
   methods: {
-    money(value) {
+    formatTextToCurrency(value) {
       return 'R$ ' + value + ',00';
     },
     activateProduct(id) {
@@ -83,7 +82,6 @@ export default {
           console.error("Erro ao obter dados:", error);
         });
     }
-
-  },
+  }
 }
 </script>

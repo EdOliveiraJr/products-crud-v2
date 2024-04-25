@@ -71,11 +71,11 @@
 
 <script>
 import Dialog from 'primevue/dialog';
-import FloatLabel from 'primevue/floatlabel'
+import FloatLabel from 'primevue/floatlabel';
 
 export default {
+	name: 'ProductForm',
 	components: { Dialog, FloatLabel },
-	name: 'product-form',
 	props: {
 		header: {
 			type: String,
@@ -86,7 +86,7 @@ export default {
 		},
 		visible: {
 			type: Boolean,
-		},
+		}
 	},
 	data() {
 		return {
@@ -95,31 +95,30 @@ export default {
 				name: '',
 				price: '',
 				description: '',
-				isActive: true,
+				isActive: true
 			},
-			visibleDialog: this.visible,
-
+			visibleDialog: this.visible
 		}
 	},
-	created() {
+	mounted() {
 		if (this.productEdit) {
-			this.product = this.productEdit
+			this.product = this.productEdit;
 		}
 	},
 	methods: {
 		closeDialog() {
-			this.visibleDialog = false
-			this.$emit('closedDialog', this.visibleDialog)
+			this.visibleDialog = false;
+			this.$emit('closedDialog', this.visibleDialog);
 		},
 		saveEditProduct(product) {
-			this.$emit('saveEditProduct', product)
-			this.closeDialog()
+			this.$emit('saveEditProduct', product);
+			this.closeDialog();
 		},
 		saveNewProduct(product) {
-			this.$emit('saveNewProduct', product)
-			this.closeDialog()
-		},
-	},
+			this.$emit('saveNewProduct', product);
+			this.closeDialog();
+		}
+	}
 }
 </script>
 <style></style>

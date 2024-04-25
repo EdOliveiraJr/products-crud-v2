@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home-view">
     <TabMenu :model="items">
       <template #item="{ item, props }">
         <div v-bind="props.action" @click="this.label = item.label">
@@ -45,8 +45,14 @@ import ProductForm from '../components/ProductForm.vue';
 import service from '../service/index';
 
 export default {
-  components: { Button, TabMenu, ActiveProducts, InactiveProducts, ProductForm },
-  name: 'home',
+  name: 'HomeView',
+  components: {
+    ActiveProducts, 
+    Button, 
+    InactiveProducts, 
+    ProductForm, 
+    TabMenu
+  },
   data() {
     return {
       header: 'Adicionar Novo Produto',
@@ -57,10 +63,10 @@ export default {
       label: '',
       productsActives: [],
       productsInactives: [],
-      visible: false,
+      visible: false
     }
   },
-  created() {
+  mounted() {
     this.loadProducts();
   },
   methods: {
@@ -92,7 +98,7 @@ export default {
         .catch(error => {
             console.error("Erro ao obter dados:", error);
         });
-    },
-  },
+    }
+  }
 }
 </script>

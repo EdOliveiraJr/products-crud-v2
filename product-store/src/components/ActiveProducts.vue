@@ -20,7 +20,7 @@
 									</div>
 								</div>
 								<div class="flex flex-column md:align-items-end gap-5">
-									<span class="text-xl font-semibold text-900">{{ money(item.price) }}</span>
+									<span class="text-xl font-semibold text-900">{{ formatTextToCurrency(item.price) }}</span>
 								</div>
 								<div>
 									<Button 
@@ -33,11 +33,11 @@
 									/>
 									<Button
 										class="mx-1" 
-										label="Desativar"
+										label="Inativar"
 										raised
 										rounded 
 										severity="warning" 
-										@click="deactivateProduct(item.id)"
+										@click="inactivateProduct(item.id)"
 									/>
 								</div>
 							</div>
@@ -61,11 +61,11 @@
 <script>
 import DataView from 'primevue/dataview';
 import ProductForm from './ProductForm.vue';
-import service from '@/service';
+import service from '../service/index';
 
 export default {
+	name: 'ActiveProducts',
 	components: { DataView, ProductForm },
-	name: 'active-products',
 	props: {
 		products: Array
 	},
@@ -73,26 +73,26 @@ export default {
 		return {
 			header: 'Editar Produto',
 			product: {
+				description: '',
 				id: '',
 				name: '',
 				price: '',
-				description: '',
 			},
 			visible: false,
 		}
 	},
 	methods: {
-		money(value) {
-			return 'R$ ' + value + ',00'
+		formatTextToCurrency(value) {
+			return 'R$ ' + value + ',00';
 		},
 		openProductFormEdit(item) {
 			this.visible = true;
-			this.product = item
+			this.product = item;
 		},
-		deactivateProduct(id) {
+		inactivateProduct(id) {
 			service.inactiveProduct(id)
 				.then(() => {
-					this.$emit('loadProducts')
+					this.$emit('loadProducts');
 				})
 				.catch(error => {
 					console.error("Erro ao obter dados:", error);
@@ -107,6 +107,6 @@ export default {
 					console.error("Erro ao obter dados:", error);
 				});
 		}
-	},
+	}
 }
 </script>
