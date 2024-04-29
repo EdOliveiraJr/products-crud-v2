@@ -26,13 +26,13 @@
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.product-form .lbl {
+.product-form .p-float-label {
   margin: 2rem;
 }
-.product-form .lbl input {
+.product-form input {
   background-color: rgba(238, 238, 144, 0.427);
 }
-.product-form .lbl label {
+.product-form label {
   color: black;
 }
 .product-form .btn-form {

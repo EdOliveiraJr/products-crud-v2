@@ -1,12 +1,14 @@
 .product-form {
-  .lbl {
+  .p-float-label {
     margin: 2rem ;
-    input{
-      background-color: rgba(238, 238, 144, 0.427);
-    }  
-    label{
-      color: black;
-    }
+  }
+  
+  input{
+    background-color: rgba(238, 238, 144, 0.427);
+  }
+
+  label{
+    color: black;
   }
 
   .btn-form {

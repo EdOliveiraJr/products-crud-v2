@@ -5,15 +5,15 @@
 		@after-hide="closeDialog"
 	>
 		<div v-if="!productEdit">
-			<FloatLabel class="lbl">
+			<FloatLabel>
 				<InputText id="name" v-model="product.name" />
 				<label for="name">Nome</label>
 			</FloatLabel>
-			<FloatLabel class="lbl">
+			<FloatLabel>
 				<InputText id="price" v-model="product.price" />
 				<label for="price">Preço</label>
 			</FloatLabel>
-			<FloatLabel class="lbl">
+			<FloatLabel>
 				<InputText id="description" v-model="product.description" />
 				<label for="description">Descrição</label>
 			</FloatLabel>
@@ -34,15 +34,15 @@
 			</div>
 		</div>
 		<div v-else>
-			<FloatLabel class="lbl">
+			<FloatLabel>
 				<InputText id="name" v-model="productEdit.name" />
 				<label for="name">Nome</label>
 			</FloatLabel>
-			<FloatLabel class="lbl">
+			<FloatLabel>
 				<InputText id="price" v-model="productEdit.price" />
 				<label for="price">Preço</label>
 			</FloatLabel>
-			<FloatLabel class="lbl">
+			<FloatLabel>
 				<InputText id="description" v-model="productEdit.description" />
 				<label for="description">Descrição</label>
 			</FloatLabel>
