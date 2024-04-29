@@ -11,7 +11,7 @@
 			</FloatLabel>
 			<FloatLabel class="m-5">
 				<InputText id="price" v-model="product.price" />
-				<label for="price">Price</label>
+				<label for="price">Preço</label>
 			</FloatLabel>
 			<FloatLabel class="m-5">
 				<InputText id="description" v-model="product.description" />
@@ -42,7 +42,7 @@
 			</FloatLabel>
 			<FloatLabel class="m-5">
 				<InputText id="price" v-model="productEdit.price" />
-				<label for="price">Price</label>
+				<label for="price">Preço</label>
 			</FloatLabel>
 			<FloatLabel class="m-5">
 				<InputText id="description" v-model="productEdit.description" />
