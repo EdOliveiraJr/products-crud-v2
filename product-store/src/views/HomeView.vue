@@ -2,7 +2,7 @@
   <div class="home-view">
     <TabMenu :model="items">
       <template #item="{ item, props }">
-        <div v-bind="props.action" @click="this.label = item.label">
+        <div class="tab" v-bind="props.action" @click="this.label = item.label">
           {{ item.label }}
         </div>
       </template>

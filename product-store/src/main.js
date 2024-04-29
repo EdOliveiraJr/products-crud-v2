@@ -5,11 +5,13 @@ import store from './store';
 
 import './plugins/axios';
 import './service/index';
+import '../src/assets/sass/index.css'
 
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-green/theme.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
+
 const app = createApp(App);
 
 import ToastService from 'primevue/toastservice';
