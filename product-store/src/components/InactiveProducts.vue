@@ -24,18 +24,14 @@
                 </div>
                 <div>
                   <Button 
-                    class="mx-1" 
-                    label="Ativar" 
-                    raised
-                    rounded 
+                    class="btn-form" 
+                    label="Ativar"
                     severity="success" 
                     @click="activateProduct(item.id)"
                   />
                   <Button 
-                    class="mx-1" 
-                    label="Deletar" 
-                    raised 
-                    rounded 
+                    class="btn-form" 
+                    label="Deletar"
                     severity="danger" 
                     @click="deleteProduct(item.id)"
                   />
