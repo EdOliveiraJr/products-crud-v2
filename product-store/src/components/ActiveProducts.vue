@@ -23,19 +23,15 @@
 									<span class="text-xl font-semibold text-900">{{ formatTextToCurrency(item.price) }}</span>
 								</div>
 								<div>
-									<Button 
-										class="mx-1" 
+									<Button
+										class="btn-form" 
 										label="Editar"
-										raised
-										rounded 
 										severity="info" 
 										@click="openProductFormEdit(item)"
 									/>
 									<Button
-										class="mx-1" 
+										class="btn-form" 
 										label="Inativar"
-										raised
-										rounded 
 										severity="warning" 
 										@click="inactivateProduct(item.id)"
 									/>

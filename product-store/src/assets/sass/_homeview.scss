@@ -10,12 +10,10 @@
     align-items: center;
   }
   
-  .add-product {
+  .btn-add-product {
     margin: 1.5rem;
     padding-inline: 1rem;
     border-radius: 50%;
-    color: #ffffff;
-    background: #22c55e;
-    border: 1px solid #22c55e;
+    box-shadow: $raised;
   }
 }

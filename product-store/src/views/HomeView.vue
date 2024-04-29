@@ -15,8 +15,9 @@
       <ActiveProducts :products="productsActives" @loadProducts="loadProducts" />
       <div class="add">
         <Button
-          class="add-product" 
-          icon="pi pi-plus" 
+          class="btn-add-product" 
+          icon="pi pi-plus"
+          severity="success"
           @click="openProductFormAdd" 
         />
       </div>
