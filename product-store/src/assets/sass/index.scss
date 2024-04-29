@@ -1,4 +1,5 @@
-@import './variables';
+@import './_variables';
 @import './_homeview.scss';
-@import './activeProducts';
-@import './inactiveProducts';
+@import './_activeProducts';
+@import './_inactiveProducts';
+@import './_productForm';

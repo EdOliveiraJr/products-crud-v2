@@ -1,0 +1,17 @@
+.product-form {
+  .lbl {
+    margin: 2rem ;
+    input{
+      background-color: rgba(238, 238, 144, 0.427);
+    }  
+    label{
+      color: black;
+    }
+  }
+
+  .btn-form {
+    margin: 0.25rem;
+    border-radius: 1rem;
+    box-shadow: $raised;
+  }
+}
