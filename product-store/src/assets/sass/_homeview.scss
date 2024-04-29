@@ -1,5 +1,21 @@
 .home-view {
   .tab {
-    background-color: black;
+    background-color: rgba(211, 211, 211, 0.388);
+    margin-inline: 0.1rem;
+  }
+
+  .add {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .add-product {
+    margin: 1.5rem;
+    padding-inline: 1rem;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #22c55e;
+    border: 1px solid #22c55e;
   }
 }

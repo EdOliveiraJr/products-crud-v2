@@ -2,20 +2,21 @@
   <div class="home-view">
     <TabMenu :model="items">
       <template #item="{ item, props }">
-        <div class="tab" v-bind="props.action" @click="this.label = item.label">
+        <div 
+          class="tab" 
+          v-bind="props.action" 
+          @click="this.label = item.label"
+        >
           {{ item.label }}
         </div>
       </template>
     </TabMenu>
     <div v-if="this.label == 'Produtos Ativos'">
       <ActiveProducts :products="productsActives" @loadProducts="loadProducts" />
-      <div class="flex justify-content-end">
-        <Button 
-          class="mx-6 p-4" 
+      <div class="add">
+        <Button
+          class="add-product" 
           icon="pi pi-plus" 
-          raised 
-          rounded
-          severity="success" 
           @click="openProductFormAdd" 
         />
       </div>
