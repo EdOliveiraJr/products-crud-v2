@@ -15,6 +15,7 @@
       <ActiveProducts :products="productsActives" @loadProducts="loadProducts" />
       <div class="add">
         <Button
+          aria-label="Botão Adicionar Produto"
           class="btn-add-product" 
           icon="pi pi-plus"
           severity="success"
