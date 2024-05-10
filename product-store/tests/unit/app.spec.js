@@ -7,4 +7,10 @@ describe('App', ()=>{
     expect(wrapper.html()).toContain('<router-link to="/">Home</router-link>')
   })
 
+  it('render router link About', ()=>{
+    const wrapper = mount(App)
+    expect(wrapper.html()).toContain('<router-link to="/about">About</router-link>')
+  })
+
+
 })
