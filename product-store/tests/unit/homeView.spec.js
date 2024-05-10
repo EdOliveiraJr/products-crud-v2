@@ -1,5 +1,4 @@
 import HomeView from "@/views/HomeView.vue"
-import axios from "axios"
 import { mount } from "@vue/test-utils"
 
 jest.mock('axios', () => {
@@ -20,8 +19,8 @@ function factory() {
           { label: 'Produtos Inativos', icon: 'pi pi-ban' },
         ], 
         label: '',
-        productsActives: [{}],
-        productsInactives: [{}],
+        productsActives: [],
+        productsInactives: [],
         visible: false
       }
     }
@@ -43,5 +42,4 @@ describe('HomeView', ()=>{
     expect(wrapper.html()).toContain('Produtos Inativos')
   })
 
- 
 })
