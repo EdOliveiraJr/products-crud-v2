@@ -12,5 +12,9 @@ describe('App', ()=>{
     expect(wrapper.html()).toContain('<router-link to="/about">About</router-link>')
   })
 
+  it('render router-view', ()=>{
+    const wrapper = mount(App)
+    expect(wrapper.html()).toContain('router-view')
+  })
 
 })
