@@ -38,4 +38,10 @@ describe('HomeView', ()=>{
     expect(wrapper.html()).toContain('Produtos Ativos')
   })
 
+  it('render Tab Produtos Inativos',()=>{
+    const wrapper = factory()
+    expect(wrapper.html()).toContain('Produtos Inativos')
+  })
+
+ 
 })
