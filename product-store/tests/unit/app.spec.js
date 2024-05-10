@@ -1,0 +1,10 @@
+import App from "@/App.vue";
+import { mount } from "@vue/test-utils";
+
+describe('App', ()=>{
+  it('render router link Home', ()=>{
+    const wrapper = mount(App)
+    expect(wrapper.html()).toContain('<router-link to="/">Home</router-link>')
+  })
+
+})
