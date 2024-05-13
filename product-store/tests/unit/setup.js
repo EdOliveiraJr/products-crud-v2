@@ -1,6 +1,5 @@
 import { config } from '@vue/test-utils';
 
-
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import AutoComplete from 'primevue/autocomplete';
@@ -45,10 +44,18 @@ import Toast from 'primevue/toast';
 import ToggleButton from 'primevue/togglebutton';
 import Tooltip from 'primevue/tooltip';
 
+import HomeView from '@/views/HomeView.vue';
+import AboutView from '@/views/AboutView.vue';
+import ActiveProducts from '@/components/ActiveProducts.vue';
+import InactiveProducts from '@/components/InactiveProducts.vue';
+import ProductForm from '@/components/ProductForm.vue';
+
 config.global = {
   components: {
+    AboutView,
     Accordion,
     AccordionTab,
+    ActiveProducts,
     AutoComplete,
     Badge,
     Breadcrumb,
@@ -64,7 +71,9 @@ config.global = {
     Divider,
     Dropdown,
     Fieldset,
+    HomeView,
     Image,
+    InactiveProducts,
     InputNumber,
     InputSwitch,
     InputText,
@@ -76,6 +85,7 @@ config.global = {
     MultiSelect,
     OverlayPanel,
     Panel,
+    ProductForm,
     ProgressBar,
     ProgressSpinner,
     RadioButton,
