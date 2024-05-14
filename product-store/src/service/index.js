@@ -2,24 +2,27 @@ import api from '../plugins/axios'
 
 const service = {
     async getActivesProducts() {
-        try {
-            const response = await api.get('/products?isActive=true');
-            return response.data.data;
-        }
-        catch{
-            console.log("Erro ao obter dados:", error);
-            return null;
-        }
+        return await api.get('/products?isActive=true');
+        // try {
+        //     const response = await api.get('/products?isActive=true');
+        //     console.log(response);
+        //     return response.data.data;
+        // }
+        // catch{
+        //     console.log("Erro ao obter dados:", error);
+        //     return null;
+        // }
     },
     async getInactivesProducts(){
-        try{
-            const response = await api.get('/products?isActive=false');
-            return response.data.data;
-        }
-        catch{
-            console.error("Erro ao obter dados:", error);
-            return null;
-        }
+        return await api.get('/products?isActive=false');
+        // try{
+        //     const response = await api.get('/products?isActive=false');
+        //     return response.data.data;
+        // }
+        // catch{
+        //     console.error("Erro ao obter dados:", error);
+        //     return null;
+        // }
     },
     async getProduct(id){
         try{

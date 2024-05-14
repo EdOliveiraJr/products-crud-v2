@@ -12,16 +12,17 @@
       </template>
     </TabMenu>
     <div v-if="this.label == 'Produtos Ativos'">
-      <ActiveProducts :products="productsActives" @loadProducts="loadProducts" />
       <div class="add">
-        <Button
-          aria-label="Botão Adicionar Produto"
+        <Button id="add-product"
+          aria-label="Adicionar Produto"
           class="btn-add-product" 
           icon="pi pi-plus"
           severity="success"
+          autofocus
           @click="openProductFormAdd" 
         />
       </div>
+      <ActiveProducts :products="productsActives" @loadProducts="loadProducts" />
       <div v-if="this.visible == true">
         <ProductForm 
           :header="header" 
@@ -73,22 +74,30 @@ export default {
     this.loadProducts();
   },
   methods: {
-    loadProducts() {
-      service.getActivesProducts()
-        .then(data => {
-          this.productsActives = data;
-        })
-        .catch(error => {
-          console.error("Erro ao obter dados:", error);
-        });
+    async loadProducts() {
+      try {
+        const response = await service.getActivesProducts();
+        this.productsActives =  response.data.data;
+        console.log(this.productsActives);
+      }
+      catch(error){
+        console.log("Erro ao obter dados:", error);
+      }
+      // service.getActivesProducts()
+      //   .then(data => {
+      //     this.productsActives = data;
+      //   })
+      //   .catch(error => {
+      //     console.error("Erro ao obter dados:", error);
+      //   });
 
-      service.getInactivesProducts()
-        .then(data => {
-          this.productsInactives = data;
-        })
-        .catch(error => {
-          console.error("Erro ao obter dados:", error);
-        });
+      // service.getInactivesProducts()
+      //   .then(data => {
+      //     this.productsInactives = data;
+      //   })
+      //   .catch(error => {
+      //     console.error("Erro ao obter dados:", error);
+      //   });
     },
     openProductFormAdd() {
       this.visible = true;
