@@ -4,7 +4,7 @@ import HomeView from "@/views/HomeView.vue";
 import setup from './setup';
 import plugins from "./plugins";
 
-import { getActivesProducts, getInactivesProducts } from '../../src/service/index.js'
+import service from "@/service";
 
 config.global = setup.global;
 
@@ -20,19 +20,37 @@ jest.mock('axios', () => ({
 }));
 
 describe('HomeView.vue', () => {
-  test('Methods that are called on component is mounted',()=>{
-    getActivesProducts.mockResolvedValue({ status: 200, data: [] });
-    getInactivesProducts.mockResolvedValue({ status: 200, data: [] });
-
+  test('Methods that are called on component is mounted', async () => {
+    service.getActivesProducts.mockResolvedValue(
+      { 
+        status: 200, 
+        data: {
+          data: [] 
+        }
+      }
+    );
+    service.getInactivesProducts.mockResolvedValue(
+      { 
+        status: 200, 
+        data: { 
+          data: [] 
+        }
+      }
+    );
+    
     const wrapper = shallowMount(HomeView, {
       global: {
         plugins
       }
     })
 
-    // await flushPromises();
-    const loadProduct = wrapper.vm.loadProducts;
-    expect(loadProduct).toHaveLength(0)
+    await flushPromises();
+    const productsActives = wrapper.vm.productsActives;
+    const productsInactives = wrapper.vm.productsInactives;
+
+    expect(productsActives).toHaveLength(0)
+    expect(productsInactives).toHaveLength(0)
+    
   })
 })
 
