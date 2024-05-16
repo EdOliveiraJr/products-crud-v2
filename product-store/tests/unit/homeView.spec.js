@@ -1,10 +1,10 @@
 import { config, flushPromises, mount, shallowMount } from "@vue/test-utils";
 
-import HomeView from "@/views/HomeView.vue";
+import HomeView from "../../src/views/HomeView.vue";
 import setup from './setup';
 import plugins from "./plugins";
 
-import service from "@/service";
+import service from "../../src/service/index";
 
 config.global = setup.global;
 
@@ -37,7 +37,7 @@ describe('HomeView.vue', () => {
         }
       }
     );
-    
+
     const wrapper = shallowMount(HomeView, {
       global: {
         plugins
@@ -53,51 +53,3 @@ describe('HomeView.vue', () => {
     
   })
 })
-
-// function factory() {
-//   return mount(HomeView, {
-//     data() {
-//       return {
-//         header: 'Adicionar Novo Produto',
-//         items: [
-//           { label: 'Produtos Ativos', icon: 'pi pi-check-circle' },
-//           { label: 'Produtos Inativos', icon: 'pi pi-ban' },
-//         ], 
-//         label: '',
-//         productsActives: [],
-//         productsInactives: [],
-//         visible: false,
-//       }
-//     }
-//   })
-// }
-
-// describe('HomeView', ()=>{
-//   afterAll(() => {
-//     jest.resetAllMocks();
-//   });
-
-//   it('loadProduct function', ()=>{
-//     getActivesProducts.mockResolvedValue({ status: 200, data: [] })
-//     getInactivesProducts.mockResolvedValue({ status: 200, data: [] })
-
-//     const wrapper = factory()
-//     wrapper.vm.loadProducts()
-//     const productsActives = wrapper.vm.productsActives
-//     expect(productsActives).toHaveLength(0)
-
-//   })
-
-  // it('render Tab Produtos Ativos',()=>{
-    
-  //   getActivesProducts.mockResolvedValue({status: 200})
-
-  //   const wrapper = factory()
-    
-  //   expect(wrapper.html()).toContain('Produtos Ativos')
-  // })
-
-  // it('render Tab Produtos Inativos',()=>{
-  //   const wrapper = factory()
-  //   expect(wrapper.html()).toContain('Produtos Inativos')
-  // })
