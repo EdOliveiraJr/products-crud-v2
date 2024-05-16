@@ -78,26 +78,18 @@ export default {
       try {
         const response = await service.getActivesProducts();
         this.productsActives =  response.data.data;
-        console.log(this.productsActives);
       }
       catch(error){
         console.log("Erro ao obter dados:", error);
       }
-      // service.getActivesProducts()
-      //   .then(data => {
-      //     this.productsActives = data;
-      //   })
-      //   .catch(error => {
-      //     console.error("Erro ao obter dados:", error);
-      //   });
 
-      // service.getInactivesProducts()
-      //   .then(data => {
-      //     this.productsInactives = data;
-      //   })
-      //   .catch(error => {
-      //     console.error("Erro ao obter dados:", error);
-      //   });
+      try {
+        const response =  await service.getInactivesProducts();
+        this.productsInactives = response.data.data;
+      }
+      catch(error){
+        console.log("Erro ao obter dados:", error);
+      }
     },
     openProductFormAdd() {
       this.visible = true;
