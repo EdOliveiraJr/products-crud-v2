@@ -87,18 +87,17 @@ export default {
 			this.product = item;
 		},
 		inactivateProduct(id) {
-			service.inactiveProduct(id)
-				.then(() => {
-					this.$emit('loadProducts');
-				})
-				.catch(error => {
-					console.error("Erro ao obter dados:", error);
-				});
+			try {
+				service.inactiveProduct(id)
+				this.$emit('loadProducts');
+			} catch (error) {
+				console.error("Erro ao obter dados:", error);
+			}
 		},
 		updateProduct(product) {
 			service.updateProduct(product.id, product)
 				.then(() => {
-					this.$emit('loadProducts');
+					this.$emit('loadProducts'); // alterar para load-products
 				})
 				.catch(error => {
 					console.error("Erro ao obter dados:", error);
