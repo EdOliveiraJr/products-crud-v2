@@ -101,10 +101,6 @@ export default {
 			} catch (error) {
 				console.log("Erro ao obter dados:", error);
 			}
-				// .then(() => {
-				// })
-				// .catch(error => {
-				// });
 		}
 	}
 }
