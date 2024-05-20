@@ -94,14 +94,13 @@ export default {
     openProductFormAdd() {
       this.visible = true;
     },
-    addProduct(product) {
-      service.addProduct(product)
-        .then(() => {
-            this.loadProducts();
-        })
-        .catch(error => {
-            console.error("Erro ao obter dados:", error);
-        });
+    async addProduct(product) {
+      try {
+        const response =  await service.addProduct(product);
+        if( response ) this.loadProducts();
+      } catch (error) {
+        console.log("Erro ao obter dados:", error);
+      }
     }
   }
 }
