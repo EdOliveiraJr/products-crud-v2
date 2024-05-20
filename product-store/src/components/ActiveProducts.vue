@@ -86,22 +86,25 @@ export default {
 			this.visible = true;
 			this.product = item;
 		},
-		inactivateProduct(id) {
+		async inactivateProduct(id) {
 			try {
-				service.inactiveProduct(id)
-				this.$emit('loadProducts');
+				const response =  await service.inactiveProduct(id)
+				if(response) this.$emit('loadProducts');
 			} catch (error) {
-				console.error("Erro ao obter dados:", error);
+				console.log("Erro ao obter dados:", error);
 			}
 		},
-		updateProduct(product) {
-			service.updateProduct(product.id, product)
-				.then(() => {
-					this.$emit('loadProducts'); // alterar para load-products
-				})
-				.catch(error => {
-					console.error("Erro ao obter dados:", error);
-				});
+		async updateProduct(product) {
+			try {
+				const response = await service.updateProduct(product.id, product);
+				if(response)	this.$emit('loadProducts'); // alterar para load-products
+			} catch (error) {
+				console.log("Erro ao obter dados:", error);
+			}
+				// .then(() => {
+				// })
+				// .catch(error => {
+				// });
 		}
 	}
 }
