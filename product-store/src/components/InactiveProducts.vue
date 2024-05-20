@@ -60,23 +60,21 @@ export default {
     formatTextToCurrency(value) {
       return 'R$ ' + value + ',00';
     },
-    activateProduct(id) {
-      service.activeProduct(id)
-        .then(() => {
-          this.$emit('loadProducts');
-        })
-        .catch(error => {
-          console.error("Erro ao obter dados:", error);
-        });
+    async activateProduct(id) {
+      try {
+        const response =  await service.activeProduct(id);
+        if(response) this.$emit('loadProducts');
+      } catch (error) {
+          console.log("Erro ao obter dados:", error);
+      }
     },
-    deleteProduct(id) {
-      service.deleteProduct(id)
-        .then(() => {
-          this.$emit('loadProducts');
-        })
-        .catch(error => {
-          console.error("Erro ao obter dados:", error);
-        });
+    async deleteProduct(id) {
+      try {
+       const response = await service.deleteProduct(id);
+       if (response) this.$emit('loadProducts');        
+      } catch (error) {
+        console.log("Erro ao obter dados:", error);
+      }
     }
   }
 }
