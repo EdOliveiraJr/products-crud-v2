@@ -89,8 +89,5 @@ describe('HomeView.vue', () => {
     const item = {name: 'Produto 1', price: '10', describe: 'Produto 1'}
     await wrapper.vm.addProduct(item);
     expect(wrapper.vm.productsActives).toHaveLength(1);
-    console.log(wrapper.vm.productsActives);
-    //ToDo
   })
-  
 })
