@@ -1,5 +1,4 @@
 import { config, mount } from "@vue/test-utils";
-
 import ProductForm from "../../src/components/ProductForm.vue";
 import setup from './setup';
 import plugins from "./plugins";

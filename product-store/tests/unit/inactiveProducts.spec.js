@@ -1,5 +1,5 @@
 import { config, mount } from "@vue/test-utils";
-import ActiveProducts from "../../src/components/ActiveProducts.vue";
+import InactiveProducts from "../../src/components/InactiveProducts.vue";
 import setup from './setup';
 import plugins from "./plugins";
 import service from "../../src/service/index";
@@ -17,9 +17,9 @@ jest.mock('axios', () => ({
   }))
 }));
 
-describe('ActiveProducts', () => {
+describe('InactiveProducts', () => {
   test('Method formatTextCurrency return correct format', ()=> {
-    const wrapper = mount(ActiveProducts, {
+    const wrapper = mount(InactiveProducts, {
       global: {
         plugins
       }
@@ -27,21 +27,9 @@ describe('ActiveProducts', () => {
     const str =  wrapper.vm.formatTextToCurrency(10);
     expect(str).toEqual('R$ 10,00');
   })
-
-  test('Method openProductFormEdit change variable visible', () => {
-    const wrapper = mount(ActiveProducts, {
-      global: {
-        plugins
-      }
-    })
-    const item = {name: 'Produto 1', price: '10', describe: 'Produto 1'};
-    wrapper.vm.openProductFormEdit(item);
-    expect(wrapper.vm.visible).toBeTruthy();
-  })
-
-  test('Method inactivateProduct emits loadProducts', async () => {
-    service.inactiveProduct.mockResolvedValue( {status: 204});
-    const wrapper = mount(ActiveProducts, {
+  test('Method activateProduct emits loadProducts', async () => {
+    service.activeProduct.mockResolvedValue( {status: 200});
+    const wrapper = mount(InactiveProducts, {
       global: {
         plugins
       },
@@ -50,13 +38,13 @@ describe('ActiveProducts', () => {
       }
     })
     const id = 1;
-    await wrapper.vm.inactivateProduct(id);
+    await wrapper.vm.activateProduct(id);
     expect(wrapper.emitted('loadProducts')).toBeTruthy();
   })
 
-  test('Method updateProduct emits loadProducts', async () => {
-    service.updateProduct.mockResolvedValue( {status: 204})
-    const wrapper = mount(ActiveProducts, {
+  test('Method deleteProduct emits loadProducts', async () => {
+    service.deleteProduct.mockResolvedValue( {status: 202});
+    const wrapper = mount(InactiveProducts, {
       global: {
         plugins
       },
@@ -64,8 +52,8 @@ describe('ActiveProducts', () => {
         products: [{id: 1, name: 'Produto 1', price: '10', describe: 'Produto 1'}]
       }
     })
-    const product = {name: 'Produto 1', price: '10', describe: 'Produto 1'};
-    await wrapper.vm.updateProduct(product);
+    const id = 1;
+    await wrapper.vm.deleteProduct(id);
     expect(wrapper.emitted('loadProducts')).toBeTruthy();
   })
 })
