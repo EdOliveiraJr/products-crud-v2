@@ -1,20 +1,31 @@
+import { config, mount } from "@vue/test-utils";
 import App from "@/App.vue";
-import { mount } from "@vue/test-utils";
+import setup from './setup';
+import plugins from "./plugins";
+
+config.global = setup.global;
+
+function factory(){
+  return mount(App, {
+    global: {
+      plugins
+    }
+  })
+}
 
 describe('App', ()=>{
   test('render router link Home', ()=>{
-    const wrapper = mount(App);
+    const wrapper = factory();
     expect(wrapper.html()).toContain('<router-link to="/">Home</router-link>');
   })
 
   test('render router link About', ()=>{
-    const wrapper = mount(App);
+    const wrapper = factory();
     expect(wrapper.html()).toContain('<router-link to="/about">About</router-link>');
   })
 
   test('render router-view', ()=>{
-    const wrapper = mount(App);
+    const wrapper = factory();
     expect(wrapper.html()).toContain('router-view');
   })
-
 })

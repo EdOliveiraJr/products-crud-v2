@@ -6,6 +6,17 @@ import service from "../../src/service/index";
 
 config.global = setup.global;
 
+function factory(){
+  return mount(ActiveProducts, {
+    global: {
+      plugins
+    },
+    props: {
+      products: [{id: 1, name: 'Produto 1', price: '10', describe: 'Produto 1'}]
+    }
+  })
+}
+
 jest.mock('../../src/service/index.js');
 
 jest.mock('axios', () => ({
@@ -19,21 +30,13 @@ jest.mock('axios', () => ({
 
 describe('ActiveProducts', () => {
   test('Method formatTextCurrency return correct format', ()=> {
-    const wrapper = mount(ActiveProducts, {
-      global: {
-        plugins
-      }
-    })
+    const wrapper = factory();
     const str =  wrapper.vm.formatTextToCurrency(10);
     expect(str).toEqual('R$ 10,00');
   })
 
   test('Method openProductFormEdit change variable visible', () => {
-    const wrapper = mount(ActiveProducts, {
-      global: {
-        plugins
-      }
-    })
+    const wrapper = factory();
     const item = {name: 'Produto 1', price: '10', describe: 'Produto 1'};
     wrapper.vm.openProductFormEdit(item);
     expect(wrapper.vm.visible).toBeTruthy();
@@ -41,14 +44,7 @@ describe('ActiveProducts', () => {
 
   test('Method inactivateProduct emits loadProducts', async () => {
     service.inactiveProduct.mockResolvedValue( {status: 204});
-    const wrapper = mount(ActiveProducts, {
-      global: {
-        plugins
-      },
-      props: {
-        products: [{id: 1, name: 'Produto 1', price: '10', describe: 'Produto 1'}]
-      }
-    })
+    const wrapper = factory();
     const id = 1;
     await wrapper.vm.inactivateProduct(id);
     expect(wrapper.emitted('loadProducts')).toBeTruthy();
@@ -56,14 +52,7 @@ describe('ActiveProducts', () => {
 
   test('Method updateProduct emits loadProducts', async () => {
     service.updateProduct.mockResolvedValue( {status: 204})
-    const wrapper = mount(ActiveProducts, {
-      global: {
-        plugins
-      },
-      props: {
-        products: [{id: 1, name: 'Produto 1', price: '10', describe: 'Produto 1'}]
-      }
-    })
+    const wrapper = factory();
     const product = {name: 'Produto 1', price: '10', describe: 'Produto 1'};
     await wrapper.vm.updateProduct(product);
     expect(wrapper.emitted('loadProducts')).toBeTruthy();

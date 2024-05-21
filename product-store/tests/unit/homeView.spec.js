@@ -2,10 +2,22 @@ import { config, flushPromises, mount, shallowMount } from "@vue/test-utils";
 import HomeView from "../../src/views/HomeView.vue";
 import setup from './setup';
 import plugins from "./plugins";
-
 import service from "../../src/service/";
 
 config.global = setup.global;
+
+function factory() {
+  return mount(HomeView, {
+    global: {
+      plugins
+    },
+    data() {
+      return {
+        visible: false
+      }
+    }
+  })
+}
 
 jest.mock('../../src/service/index.js');
 
@@ -36,11 +48,7 @@ describe('HomeView.vue', () => {
         }
       }
     );
-    const wrapper = mount(HomeView, {
-      global: {
-        plugins
-      }
-    })
+    const wrapper = factory();
     await flushPromises();
     const productsActives = wrapper.vm.productsActives;
     const productsInactives = wrapper.vm.productsInactives;
@@ -49,16 +57,7 @@ describe('HomeView.vue', () => {
   })
 
   test('Changing the visible variable to true value when calling the openProductFormAdd method', () => {
-    const wrapper = mount(HomeView, {
-      global: {
-        plugins
-      },
-      data() {
-        return {
-          visible: false
-        }
-      },
-    })
+    const wrapper = factory();
     wrapper.vm.openProductFormAdd();
     expect(wrapper.vm.visible).toBeTruthy();
   })
@@ -81,11 +80,7 @@ describe('HomeView.vue', () => {
         }
       }
     );
-    const wrapper = mount(HomeView, {
-      global: {
-        plugins
-      },
-    })
+    const wrapper = factory();
     const item = {name: 'Produto 1', price: '10', describe: 'Produto 1'}
     await wrapper.vm.addProduct(item);
     expect(wrapper.vm.productsActives).toHaveLength(1);
