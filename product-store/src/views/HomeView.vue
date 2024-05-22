@@ -1,5 +1,6 @@
 <template>
   <div class="home-view">
+    <Toast/>
     <TabMenu :model="items">
       <template #item="{ item, props }">
         <div 

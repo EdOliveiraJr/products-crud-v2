@@ -1,8 +1,8 @@
-import { config, mount } from "@vue/test-utils";
-import ActiveProducts from "../../src/components/ActiveProducts.vue";
-import setup from './setup';
-import plugins from "./plugins";
-import service from "../../src/service/index";
+import { config, mount } from '@vue/test-utils';
+import ActiveProducts from '../../../src/components/ActiveProducts.vue';
+import setup from '../setup';
+import plugins from '../plugins';
+import service from '../../../src/service/index';
 
 config.global = setup.global;
 
@@ -17,7 +17,7 @@ function factory(){
   })
 }
 
-jest.mock('../../src/service/index.js');
+jest.mock('../../../src/service/index.js');
 
 jest.mock('axios', () => ({
   create: jest.fn( () => ({ 
