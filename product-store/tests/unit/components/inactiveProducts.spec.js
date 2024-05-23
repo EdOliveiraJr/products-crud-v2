@@ -30,24 +30,31 @@ jest.mock('axios', () => ({
 
 describe('InactiveProducts', () => {
   test('Method formatTextCurrency return correct format', ()=> {
+    //build
     const wrapper = factory();
     const str =  wrapper.vm.formatTextToCurrency(10);
     expect(str).toEqual('R$ 10,00');
   })
 
   test('Method activateProduct emits loadProducts', async () => {
+    //mock
     service.activeProduct.mockResolvedValue( {status: 200});
+    //build
     const wrapper = factory();
     const id = 1;
     await wrapper.vm.activateProduct(id);
+    //expect
     expect(wrapper.emitted('loadProducts')).toBeTruthy();
   })
 
   test('Method deleteProduct emits loadProducts', async () => {
+    //mock
     service.deleteProduct.mockResolvedValue( {status: 202});
+    //build
     const wrapper = factory();
     const id = 1;
     await wrapper.vm.deleteProduct(id);
+    //expect
     expect(wrapper.emitted('loadProducts')).toBeTruthy();
   })
 })
