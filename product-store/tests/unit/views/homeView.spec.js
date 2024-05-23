@@ -86,7 +86,6 @@ describe('HomeView.vue', () => {
         }
       }
     );
-    //spy
     const spyLoadProducts = jest.spyOn(HomeView.methods, 'loadProducts');
     //build
     const wrapper = factory();
