@@ -64,16 +64,20 @@ export default {
       try {
         const response =  await service.activeProduct(id);
         if(response) this.$emit('loadProducts');
+        this.$toast.add({ severity: 'success', summary: 'Ativado!', detail: 'O produto foi ativado com sucesso!', life: 3000 });
       } catch (error) {
-          console.log("Erro ao obter dados:", error);
+        console.log("Erro ao obter dados:", error);
+        this.$toast.add({ severity: 'error', summary: 'Erro!', detail: 'Não foi possível ativar o produto!', life: 3000 });
       }
     },
     async deleteProduct(id) {
       try {
-       const response = await service.deleteProduct(id);
-       if (response) this.$emit('loadProducts');        
+        const response = await service.deleteProduct(id);
+        if (response) this.$emit('loadProducts');
+        this.$toast.add({ severity: 'success', summary: 'Deletado!', detail: 'O produto foi deletado com sucesso!', life: 3000 });  
       } catch (error) {
         console.log("Erro ao obter dados:", error);
+        this.$toast.add({ severity: 'error', summary: 'Erro!', detail: 'Não foi possível deletar o produto!', life: 3000 });
       }
     }
   }
