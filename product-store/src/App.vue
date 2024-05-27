@@ -1,10 +1,19 @@
 <template>
   <nav>
+    <Toast/>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
   <router-view />
 </template>
+
+<script>
+import Toast from 'primevue/toast';
+
+export default {
+  components: { Toast }
+}
+</script>
 
 <style>
 #app {

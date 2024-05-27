@@ -14,7 +14,6 @@ import 'primeicons/primeicons.css';
 
 const app = createApp(App);
 
-import ToastService from 'primevue/toastservice';
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import AutoComplete from 'primevue/autocomplete';
@@ -55,6 +54,7 @@ import TabView from 'primevue/tabview';
 import Tag from 'primevue/tag';
 import Textarea from 'primevue/textarea';
 import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
 import ToggleButton from 'primevue/togglebutton';
 import Tooltip from 'primevue/tooltip';
 
