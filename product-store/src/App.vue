@@ -1,6 +1,7 @@
 <template>
   <nav>
     <Toast/>
+    <h1>Gerenciador de Produtos</h1>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
