@@ -1,7 +1,6 @@
 <template>
 	<div class="active-products" >
 		<Toast/>
-		<h2> Produtos Ativos </h2>
 		<DataView :value="products">
 			<template #list="slotProps">
 				<div class="grid grid-nogutter">

@@ -1,6 +1,5 @@
 <template>
   <div class="inactive-products">
-    <h2> Produtos Inativos </h2>
     <DataView :value="products">
       <template #list="slotProps">
         <div class="grid grid-nogutter">
