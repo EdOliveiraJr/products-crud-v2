@@ -90,14 +90,17 @@ export default {
 			try {
 				const response =  await service.inactiveProduct(id)
 				if(response) this.$emit('loadProducts');
+				this.$toast.add({ severity: 'success', summary: 'Inativado!', detail: 'O produto foi inativado com sucesso!', life: 3000 });
 			} catch (error) {
 				console.log("Erro ao obter dados:", error);
+				this.$toast.add({ severity: 'error', summary: 'Erro!', detail: 'Não foi possível inativar o produto!', life: 3000 });
 			}
 		},
 		async updateProduct(product) {
 			try {
 				const response = await service.updateProduct(product.id, product);
 				if(response)	this.$emit('loadProducts'); // alterar para load-products
+				this.$toast.add({ severity: 'success', summary: 'Editado!', detail: 'O produto foi editado com sucesso!', life: 3000 });
 			} catch (error) {
 				console.log("Erro ao obter dados:", error);
 			}
