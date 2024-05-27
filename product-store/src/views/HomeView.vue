@@ -99,7 +99,7 @@ export default {
       try {
         const response =  await service.addProduct(product);
         if( response ) this.loadProducts();
-        this.$toast.add({ severity: 'success', summary: 'Sucesso!', detail: 'O produto foi adicionado com sucesso!', life: 3000 });
+        this.$toast.add({ severity: 'success', summary: 'Adicionado!', detail: 'O produto foi adicionado com sucesso!', life: 3000 });
       } catch (error) {
         console.log("Erro ao obter dados:", error);
         this.$toast.add({ severity: 'error', summary: 'Erro!', detail: 'Não foi possível adicionar o produto!', life: 3000 });
