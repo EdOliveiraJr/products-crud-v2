@@ -1,17 +1,18 @@
+* {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
-#app main {
-  height: 93vh;
+#app .app {
+  position: relative;
 }
-#app nav {
+#app .app nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,21 +20,37 @@
   padding: 0.625rem;
   background-color: #2c3e50;
   color: white;
+  margin-bottom: 0.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
-#app nav h1 {
+#app .app nav .title {
+  display: flex;
+  align-items: center;
+}
+#app .app nav .title img {
+  height: 3.75rem;
+  margin-left: 0.5rem;
+}
+#app .app nav h1 {
   margin-left: 1.25rem;
 }
-#app nav .page-links {
+#app .app nav .page-links {
   margin-right: 1.25rem;
 }
-#app nav a {
+#app .app nav a {
   font-weight: bold;
   color: white;
   padding-inline: 0.3125rem;
   text-decoration: none;
 }
-#app nav a.router-link-exact-active {
+#app .app nav a.router-link-exact-active {
   color: #42b983;
+}
+#app .app main {
+  margin-top: 100px;
 }
 
 .home-view .tab {
@@ -83,11 +100,17 @@
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #2c3e50;
+  height: 1.875rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .footer p {
   background-color: #2c3e50;
-  height: 100%;
   color: white;
   font-size: x-small;
 }/*# sourceMappingURL=index.css.map */
