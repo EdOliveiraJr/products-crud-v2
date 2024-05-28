@@ -24,6 +24,7 @@
   font-weight: bold;
   color: white;
   padding-inline: 0.3125rem;
+  text-decoration: none;
 }
 #app nav a.router-link-exact-active {
   color: #42b983;
