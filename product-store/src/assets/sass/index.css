@@ -51,6 +51,7 @@
 }
 #app .app main {
   margin-top: 100px;
+  margin-bottom: 30px;
 }
 
 .home-view .tab {
