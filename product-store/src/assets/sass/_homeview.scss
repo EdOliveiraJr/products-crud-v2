@@ -1,19 +1,26 @@
 .home-view {
-  .tab {
-    background-color: rgba(211, 211, 211, 0.388);
-    margin-inline: 0.1rem;
+  position: relative;
+
+  .p-tabmenu {    
+    .tab {
+      background-color: rgba(211, 211, 211, 0.388);
+      margin-inline: 0.1rem;
+    }
   }
 
   .add {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    
+    .btn-add-product {
+      position: fixed;
+      margin: 1.5rem;
+      padding-inline: 1rem;
+      border-radius: 50%;
+      box-shadow: $raised;
+    }
+  
   }
   
-  .btn-add-product {
-    margin: 1.5rem;
-    padding-inline: 1rem;
-    border-radius: 50%;
-    box-shadow: $raised;
-  }
 }

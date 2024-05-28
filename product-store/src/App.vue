@@ -14,6 +14,7 @@
     <main>
       <router-view />
     </main>
+    <button id="back-to-top" @click="scrollToTop()"> ^ </button>
     <Footer/>
   </div>
   </template>
@@ -24,6 +25,11 @@ import Toast from 'primevue/toast';
 
 export default {
   name: 'App',
-  components: { Footer, Toast }
+  components: { Footer, Toast },
+  methods:{
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+  }
 }
 </script>
